@@ -1,5 +1,4 @@
 from typing import Dict
-from user.models import User
 from django.db import transaction
 from user.serializers import UserSignupSerializer
 

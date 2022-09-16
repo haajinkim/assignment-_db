@@ -2,7 +2,7 @@ from rest_framework import exceptions, serializers, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.request import Request
-from user.service import post_user_signup_data
+from user.services import post_user_signup_data
 # Create your views here.
 class UserView(APIView):
     """
