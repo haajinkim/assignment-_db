@@ -4,9 +4,10 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from user.services import post_user_signup_data
 # Create your views here.
+
 class UserView(APIView):
     """
-    회원정보 조회 및 회원가입
+    회원가입 을 담당하는 기능
     """
     def post(self, request: Request) -> Response:
     

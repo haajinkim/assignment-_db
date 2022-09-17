@@ -14,22 +14,22 @@ class Routine(models.Model):
     is_alarm = models.BooleanField()
     is_deleted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_At = models.DateTimeField(auto_now=True,blank=True)
+    modified_at = models.DateTimeField(auto_now=True)
     
 class RoutineResult(models.Model):
     RESULT = {
-        ('안함','NOT'),
-        ('시도','TRY'),
-        ('완료','DONE')
+        ('NOT','NOT'),
+        ('TRY','TRY'),
+        ('DONE','DONE')
     }
     routine_id = models.ForeignKey(Routine, on_delete=models.CASCADE)
-    result = models.CharField(max_length=128)
+    result = models.CharField(max_length=128,default='NOT',choices=RESULT)
     is_deleted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_At = models.DateTimeField(auto_now=True,blank=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
 class RoutineDay(models.Model):
     routine_id = models.ForeignKey(Routine, on_delete=models.CASCADE)
     day = models.CharField(max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_At = models.DateTimeField(auto_now=True,blank=True)
+    modified_at = models.DateTimeField(auto_now=True)
