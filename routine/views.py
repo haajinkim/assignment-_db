@@ -47,9 +47,6 @@ class RoutineApiView(APIView):
                 }, status.HTTP_200_OK)
             except Routine.DoesNotExist:
                 return Response({"message":"루틴을 찾을 수 없습니다."}, status=400)
-            except RoutineDay.DoesNotExist:
-                return Response({"message":"Routine Day가 존재하지 않습니다."}, status=400)
-                
         else :
             try:
                 routine = routine_short_get_service(request_data=request.data)
@@ -67,8 +64,6 @@ class RoutineApiView(APIView):
                     }, status.HTTP_200_OK)
             except Routine.DoesNotExist:
                 return Response({"message":"루틴을 찾을 수 없습니다."}, status=400)
-            except RoutineDay.DoesNotExist:
-                return Response({"message":"Routine Day가 존재하지 않습니다."}, status=400)
 
     def post(self, request):
         """

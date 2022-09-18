@@ -20,6 +20,7 @@ class RoutineSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "category": {"write_only": True},
             "is_alarm": {"write_only": True},
+            "account_id": {"write_only": True},
         }
 
 

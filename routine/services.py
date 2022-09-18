@@ -109,7 +109,7 @@ def routine_delete_service(request_data: dict) -> int:
         delete_routine_day.delete()
 
         delete_routine.is_deleted = True
-        delete_routine.is_alram= False
+        delete_routine.is_alarm= False
         delete_routine.save()
 
         delete_routine_result.is_deleted = True
@@ -125,7 +125,6 @@ def routine_result_put_service(request_data:dict) -> int:
 
     routine_result = RoutineResult.objects.filter(routine_id_id=request_data['routine_id'])
     if routine_result.get():
-
         routine_result.update(
             result =  request_data['result']
         )
