@@ -3,7 +3,13 @@ from .models import User
 
 
 class UserSignupSerializer(serializers.ModelSerializer):
+    """
+    User 의 회원가입 을 위한 Serializer 입니다.
+    """
     def validate(self, data):
+        """
+        validate 함수를 통해 특수문자, 비밀번호 형식을 검증합니다.
+        """
         condition = all(
             x not in ["!", "@", "#", "$", "%", "^", "&", "*", "_"]
             for x in data["password"]
@@ -16,6 +22,10 @@ class UserSignupSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, *args, **kwargs):
+        """
+        create 함수를 통해 obj 를 저장하고, 
+        set_password 를 통해 password 를 해싱합니다.
+        """
         user = super().create(*args, **kwargs)
         password = user.password
         user.set_password(password)
