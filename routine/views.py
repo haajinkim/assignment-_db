@@ -91,7 +91,7 @@ class RoutineApiView(APIView):
 
     def put(self, request: dict) -> Response:
         """
-        routine_update_service 함수를 통해서 routine 을 create 합니다.
+        routine_update_service 함수를 통해서 routine 을 put 합니다.
         routine_update_service 함수는 update_routin 의 id값을 리턴합니다
         """
         try:
@@ -145,6 +145,10 @@ class RoutineResultApiView(APIView):
     authentication_classes = [JWTAuthentication]
 
     def put(self, reqeust: dict) -> Response:
+        """
+        routine_result_put_service 함수를 통해서 routine_result 을 put 합니다.
+        routine_result_put_service 함수는 수정 된 routin 의 id 값을 리턴합니다
+        """
         try:
             routine_result = routine_result_put_service(request_data=reqeust.data)
 
