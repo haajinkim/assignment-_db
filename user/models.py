@@ -3,13 +3,12 @@ from django.db import models
 
 # Create your models here.
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
             raise ValueError("Users must have an email")
-        user = self.model(
-            email=self.normalize_email(email)
-        )
+        user = self.model(email=self.normalize_email(email))
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -46,7 +45,8 @@ class User(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
-    def has_perm(self, perm, obj=None):       
-        return self.is_admin    
-    def has_module_perms(self, app_label):       
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
         return self.is_admin

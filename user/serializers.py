@@ -1,10 +1,13 @@
 from rest_framework import serializers
-from .models import User 
+from .models import User
 
 
 class UserSignupSerializer(serializers.ModelSerializer):
     def validate(self, data):
-        condition = all(x not in ["!", "@", "#", "$", "%", "^", "&", "*", "_"] for x in data["password"])
+        condition = all(
+            x not in ["!", "@", "#", "$", "%", "^", "&", "*", "_"]
+            for x in data["password"]
+        )
 
         if len(data["nickname"]) == 0:
             raise serializers.ValidationError("닉네임을 입력해주세요.")
